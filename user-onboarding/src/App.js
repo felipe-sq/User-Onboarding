@@ -21,21 +21,24 @@ const startingFormErrors = {
   name: '',
   email: '',
   password: '',
+  terms: '',
 }
 
-
 const initialUsers =[]
+const initialDisabled = true
 
 function App() {
 
   const [users, setUsers] = useState(initialUsers)
   const [formValues, setFormValues] = useState(startingFormValues)
   const [formErrors, setFormErrors] = useState(startingFormErrors)
+  const [disabled, setDisabled] = useState(initialDisabled)
 
-useEffect(() => {
-  formSchema.isValid(formValues)
-  .then(valid => console.log(valid))
-}, [formValues])
+  const getUsers = () => {
+    axios.get('https://reqres.in/api/users')
+    .then(({data}) => setUsers(data))
+    .catch(err => console.log(err))
+  }
 
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
@@ -66,12 +69,23 @@ useEffect(() => {
     }
   }
 
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  useEffect(() => {
+    formSchema.isValid(formValues)
+    .then(valid => setDisabled(!valid))
+  }, [formValues])
+
   return (
-    <div>
+    <div className="container">
+      <header><h1>User Onboarding</h1></header>
       <Form 
         values={formValues}
         change={inputChange}
         submit={formSubmit}
+        disabled={disabled}
         errors={formErrors}  
       />
 

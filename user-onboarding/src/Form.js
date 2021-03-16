@@ -18,19 +18,20 @@ export default function Form(props) {
     const onChange = event => {
         /* code goes here */
         const { name, value, checked, type } = event.target
+        console.log('name', name)
+        console.log('value', value)
+        console.log('checked', checked)
+        console.log('type', type)
 
         const val = type === 'checkbox' ? checked : value 
         change(name, val)
     }
 
     return (
-        /* code goes here*/
         <div className="form container" onSubmit={onSubmit}>
             <div className="form-group submit">
-                <h2>User Onboarding Form!</h2>
-                <button>submit</button>
+                <h2>Welcome to the User Onboarding Form!</h2>
 
-        {/* code placeholder for errors? */}
         <div className="errors">
             <div>{errors.name}</div>
             <div>{errors.email}</div>
@@ -74,10 +75,8 @@ export default function Form(props) {
                 <input name="terms" type="checkbox" onChange={onChange} checked={values.terms}/>
             </label>
         </div>
-
-        </div>
-
-
+        <button>submit</button>
+                </div>
             </div>
         </div>
     )

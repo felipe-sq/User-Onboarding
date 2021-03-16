@@ -10,6 +10,7 @@ export const formSchema = yup.object().shape({
         .email()
         .required('Email is required'),
     password: yup
+        .string()
         .required()
         .min(6, "Minimum 6 characters required"),
     terms: yup.boolean(),

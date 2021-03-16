@@ -3,7 +3,9 @@ import './App.css';
 import * as yup from 'yup'
 import axios from 'axios'
 
-import { formSchema } from './formSchema'
+// error with yup -- attempted import error: 'required' is not exported from 'yup' (imported as 'yup')
+
+import formSchema from './validation/formSchema'
 
 import Form from './Form'
 import User from './User'
@@ -30,11 +32,19 @@ function App() {
   const [formValues, setFormValues] = useState(startingFormValues)
   const [formErrors, setFormErrors] = useState(startingFormErrors)
 
-// commented validation code due to errors //  
-// useEffect(() => {
-//   formSchema.isValid(formValues)
-//   .then(valid => console.log(valid))
-// }, [formValues])
+useEffect(() => {
+  formSchema.isValid(formValues)
+  .then(valid => console.log(valid))
+}, [formValues])
+
+  const postNewUser = newUser => {
+    axios.post('https://reqres.in/api/users', newUser)
+    .then(({data}) => {
+      setUsers([...users, data])
+      setFormValues(startingFormValues)
+    .catch(err => console.log(err))
+    })    
+  }
 
   const inputChange = (name, value) => {
     yup.reach(formSchema, name)

@@ -4,13 +4,13 @@ export const formSchema = yup.object().shape({
     name: yup
         .string()
         .trim()
-        .required('Name is a required field'),
+        .required(),
     email: yup
         .string()
-        .email('Must be a valid email')
-        .required('Email is required'),
+        .email()
+        .required(),
     password: yup
         .required()
-        .min(6, 'Password must be at least 6 characters'),
+        .min(6,),
     terms: yup.boolean(),
 })

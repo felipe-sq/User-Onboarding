@@ -1,6 +1,5 @@
 // import styled from 'styled-components'
 // above code added for stretch goals
-
 import React from 'react'
 
 export default function Form(props) {
@@ -29,12 +28,12 @@ export default function Form(props) {
                 <button>submit</button>
 
         {/* code placeholder for errors? */}
-        {/* <div className="errors">
+        <div className="errors">
             <div>{errors.name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>
             <div>{errors.terms}</div>
-        </div> */}
+        </div>
 
 
         <div className="form-group inputs">

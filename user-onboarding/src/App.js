@@ -21,6 +21,7 @@ const startingFormErrors = {
   password: '',
 }
 
+
 const initialUsers =[]
 
 function App() {
@@ -29,10 +30,11 @@ function App() {
   const [formValues, setFormValues] = useState(startingFormValues)
   const [formErrors, setFormErrors] = useState(startingFormErrors)
 
-useEffect(() => {
-  formSchema.isValid(formValues)
-  .then(valid => console.log(valid))
-}, [formValues])
+// commented validation code due to errors //  
+// useEffect(() => {
+//   formSchema.isValid(formValues)
+//   .then(valid => console.log(valid))
+// }, [formValues])
 
   const inputChange = (name, value) => {
     yup.reach(formSchema, name)

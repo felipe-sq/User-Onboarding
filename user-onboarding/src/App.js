@@ -3,8 +3,6 @@ import './App.css';
 import * as yup from 'yup'
 import axios from 'axios'
 
-// error with yup -- attempted import error: 'required' is not exported from 'yup' (imported as 'yup')
-
 import formSchema from './validation/formSchema'
 
 import Form from './Form'

@@ -33,7 +33,8 @@ export default function Form(props) {
                 <h2>Welcome to the User Onboarding Form!</h2>
 
         <div className="errors">
-            <div>{errors.name}</div>
+            <div>{errors.first_name}</div>
+            <div>{errors.last_name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>
             <div>{errors.terms}</div>
@@ -42,11 +43,20 @@ export default function Form(props) {
 
         <div className="form-group inputs">
             <h4>Essential Details</h4>
-            <label>Name
+            <label>First Name
                 <input 
-                   value={values.name}
+                   value={values.first_name}
                    onChange={onChange}
-                   name="name"
+                   name="first_name"
+                   type="text"
+                />
+            </label>
+
+            <label>Last Name
+                <input 
+                   value={values.last_name}
+                   onChange={onChange}
+                   name="last_name"
                    type="text"
                 />
             </label>

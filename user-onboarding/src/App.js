@@ -11,14 +11,16 @@ import Form from './Form'
 import User from './User'
 
 const startingFormValues = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: false,
 }
 
 const startingFormErrors = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: '',
@@ -35,8 +37,10 @@ function App() {
   const [disabled, setDisabled] = useState(initialDisabled)
 
   const getUsers = () => {
-    axios.get('https://reqres.in/api/users')
-    .then(({data}) => setUsers(data))
+    axios.get('https://reqres.in/api/users/')
+    .then(res => 
+      // console.log(res.data.data))
+      setUsers(res.data.data))
     .catch(err => console.log(err))
   }
 
@@ -62,7 +66,8 @@ function App() {
 
   const formSubmit = () => {
     const newUser = {
-      name: formValues.name.trim(),
+      first_name: formValues.first_name.trim(),
+      last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
       terms: formValues.terms

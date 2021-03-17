@@ -1,10 +1,14 @@
 import * as yup from 'yup'
 
 export const formSchema = yup.object().shape({
-    name: yup
+    first_name: yup
         .string()
         .trim()
-        .required('Name is required'),
+        .required('First name is required'),
+    last_name: yup
+        .string()
+        .trim()
+        .required('Last name is required'),
     email: yup
         .string()
         .email()

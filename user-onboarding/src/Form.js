@@ -37,7 +37,7 @@ export default function Form(props) {
             <div>{errors.last_name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>
-            <div>{errors.terms}</div>
+            {/* <div>{errors.terms}</div> */}
         </div>
 
 
@@ -81,8 +81,12 @@ export default function Form(props) {
 
         <div className="form-group checkboxes">
             <h4>Terms of Service</h4>
-            <label>Please accept the Terms of Service. This is a required step in the user onboarding process!
-                <input name="terms" type="checkbox" onChange={onChange} checked={values.terms}/>
+            <label>I accept the Terms of Service!
+                <input name="yes" type="checkbox" onChange={onChange} checked={values.yes}/>
+            </label>
+
+            <label>I do NOT accept the Terms of Service!
+                <input name="no" type="checkbox" onChange={onChange} checked={values.no}/>
             </label>
         </div>
         <button>submit</button>

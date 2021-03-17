@@ -44,7 +44,7 @@ function App() {
 
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
-    .then(({data}) => {
+    .then((data) => {
       setUsers([...users, data])
       setFormValues(startingFormValues)
     .catch(err => console.log(err))
@@ -68,7 +68,7 @@ function App() {
       last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      terms: formValues.terms
+      terms: ['yes', 'no'].filter(term => formValues[term])
     }
   }
 

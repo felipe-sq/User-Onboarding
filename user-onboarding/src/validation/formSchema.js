@@ -17,7 +17,8 @@ export const formSchema = yup.object().shape({
         .string()
         .required()
         .min(6, "Minimum 6 characters required"),
-    terms: yup.boolean(),
+    yes: yup.boolean(),
+    no: yup.boolean(),
 })
 
 export default formSchema

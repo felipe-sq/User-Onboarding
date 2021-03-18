@@ -8,7 +8,6 @@ describe('User Onboarding App', () => {
     const yesCheckbox = () => cy.get('[name="yes"]')
     const submitButton = () => cy.get('[name="button"]')
 
-
     beforeEach(() => {
         cy.visit('http://localhost:3000')
     })
@@ -27,5 +26,32 @@ describe('User Onboarding App', () => {
         passwordInput().should('exist')
         yesCheckbox().should('exist')
         submitButton().should('exist')
+    })
+
+    describe('Fills out the input fields', () => {
+        it('can type in the input fields', () => {
+            firstName()
+            .should('have.value', '')
+            .type('Ronald')
+            .should('have.value', 'Ronald')
+
+            lastName()
+            .should('have.value', '')
+            .type('McDonald')
+            .should('have.value', 'McDonald')
+
+            emailInput()
+            .should('have.value', '')
+            .type('clown@burgers.com')
+            .should('have.value', 'clown@burgers.com')
+
+            passwordInput()
+            .should('have.value', '')
+            .type('Whoppers123')
+            .should('have.value', 'Whoppers123')
+
+            yesCheckbox().click()
+            submitButton().click()
+        })
     })
 })

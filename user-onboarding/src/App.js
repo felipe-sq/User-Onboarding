@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
+// import './styles.less'
+
 import * as yup from 'yup'
 import axios from 'axios'
 
@@ -44,22 +46,19 @@ function App() {
 
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
-    .then((data) => {
-      setUsers([...users, data])
+    .then(({data}) => {
+      setUsers([data, ...users])
       setFormValues(startingFormValues)
-    .catch(err => console.log(err))
-    })    
+    })
+    .catch(err => console.log(err))    
   }
 
   const inputChange = (name, value) => {
     yup.reach(formSchema, name)
       .validate(value)
       .then(() => setFormErrors({...formErrors, [name]: ''}))
-      .catch(({errors}) => setFormErrors({...formErrors, [name]: errors.[0]}))
-    setFormValues({
-      ...formValues,
-      [name]: value
-    })
+      .catch(({errors}) => setFormErrors({...formErrors, [name]: errors[0]}))
+    setFormValues({...formValues, [name]: value})
   }
 
   const formSubmit = () => {
@@ -81,6 +80,7 @@ function App() {
     formSchema.isValid(formValues)
     .then(valid => setDisabled(!valid))
   }, [formValues])
+
 
   return (
     <div className="container">

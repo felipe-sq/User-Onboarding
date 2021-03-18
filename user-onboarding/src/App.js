@@ -13,7 +13,7 @@ const startingFormValues = {
   last_name: '',
   email: '',
   password: '',
-  terms: false,
+  yes: false,
 }
 
 const startingFormErrors = {
@@ -21,7 +21,7 @@ const startingFormErrors = {
   last_name: '',
   email: '',
   password: '',
-  terms: '',
+  yes: '',
 }
 
 const initialUsers =[]
@@ -54,8 +54,8 @@ function App() {
   const inputChange = (name, value) => {
     yup.reach(formSchema, name)
       .validate(value)
-      .then(() => console.log('is valid'))
-      .catch(err => console.log(err.errors[0].message))
+      .then(() => setFormErrors({...formErrors, [name]: ''}))
+      .catch(({errors}) => setFormErrors({...formErrors, [name]: errors.[0]}))
     setFormValues({
       ...formValues,
       [name]: value
@@ -68,8 +68,9 @@ function App() {
       last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      terms: ['yes', 'no'].filter(term => formValues[term])
+      yes: formValues.yes
     }
+    postNewUser(newUser)
   }
 
   useEffect(() => {

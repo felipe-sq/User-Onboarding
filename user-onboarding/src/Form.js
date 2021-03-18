@@ -7,6 +7,7 @@ export default function Form(props) {
         values,
         submit,
         change,
+        disabled,
         errors,
     } = props
 
@@ -18,10 +19,10 @@ export default function Form(props) {
     const onChange = event => {
         /* code goes here */
         const { name, value, checked, type } = event.target
-        console.log('name', name)
-        console.log('value', value)
-        console.log('checked', checked)
-        console.log('type', type)
+        // console.log('name', name)
+        // console.log('value', value)
+        // console.log('checked', checked)
+        // console.log('type', type)
 
         const val = type === 'checkbox' ? checked : value 
         change(name, val)
@@ -31,13 +32,14 @@ export default function Form(props) {
         <div className="form container" onSubmit={onSubmit}>
             <div className="form-group submit">
                 <h2>Welcome to the User Onboarding Form!</h2>
+                <button disabled={disabled}>submit</button>
 
         <div className="errors">
             <div>{errors.first_name}</div>
             <div>{errors.last_name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>
-            {/* <div>{errors.terms}</div> */}
+            <div>{errors.yes}</div>
         </div>
 
 
@@ -85,11 +87,11 @@ export default function Form(props) {
                 <input name="yes" type="checkbox" onChange={onChange} checked={values.yes}/>
             </label>
 
-            <label>I do NOT accept the Terms of Service!
+            {/* <label>I do NOT accept the Terms of Service!
                 <input name="no" type="checkbox" onChange={onChange} checked={values.no}/>
-            </label>
+            </label> */}
         </div>
-        <button>submit</button>
+        {/* <button disabled={disabled}>submit</button> */}
                 </div>
             </div>
         </div>

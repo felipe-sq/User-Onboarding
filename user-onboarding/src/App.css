@@ -20,24 +20,22 @@ body {
 
   @media (max-width: 650px) {
     flex-direction: column;
-  }
-
-  .form-group {
-    padding: 0 24px 0 24px;
-    display: flex;
-    flex-direction: column;
-
-    &.submit {
-      flex: 2;
-      align-items: flex-start;
-    }
-    &.inputs {
-      flex: 2;
-    }
-    &.checkboxes {
-      flex: 1;
-    }
-  }
+  } 
+}
+.container.form.form-group {
+  padding: 0 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group.submit {
+  flex: 2;
+  align-items: flex-start;
+}
+.form-group.inputs {
+  flex: 2;
+}
+.form-group.checkboxes {
+  flex: 1;
 }
 a {
   font-size: 0.75em;
@@ -49,12 +47,10 @@ header {
   align-items: center;
 }
 h1, h2, h3, h4 {
-  color: rgb(63, 20, 220);
+  color: rgb(202, 31, 8);
 }
-form {
-  h2, h4, h4 {
+form h2 h4{
     color: darkblue;
-  }
 }
 label {
   display: flex;
@@ -68,26 +64,26 @@ button {
   height: 2rem;
   width: 6rem;
   border-radius: 8px;
-  color: rgb(20, 157, 220);
+  color: rgb(23, 216, 17);
   background-color: white;
-  border: 2px solid rgb(20, 157, 220);
-  &:hover {
-    cursor: pointer;
-  }
-  &:disabled {
-    color: crimson;
-    background-color: white;
-    border: 2px solid crimson;
-    cursor: not-allowed;
-  }
+  border: 2px solid rgb(12, 185, 6);
+}
+button:hover {
+  cursor: pointer;
+}
+button:disabled {
+  color: gray;
+  background-color: white;
+  border: 2px solid darkgray;
+  cursor: not-allowed;
 }
 .errors {
   margin: 8px;
   font-size: 0.7em;
   color: red;
-
-  div {
+}
+.errors div {
     display: block;
     margin-top: 4px;
-  }
 }
+

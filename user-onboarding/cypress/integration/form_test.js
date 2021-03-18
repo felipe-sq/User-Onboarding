@@ -6,8 +6,7 @@ describe('User Onboarding App', () => {
     const emailInput = () => cy.get('[name="email"]')
     const passwordInput = () => cy.get('[name="password"]')
     const yesCheckbox = () => cy.get('[name="yes"]')
-    // const noCheckbox = () => cy.get('[name="no"]')
-    const submitButton = () => cy.get('#submit')
+    const submitButton = () => cy.get('[name="button"]')
 
 
     beforeEach(() => {
@@ -27,6 +26,6 @@ describe('User Onboarding App', () => {
         emailInput().should('exist')
         passwordInput().should('exist')
         yesCheckbox().should('exist')
-        // noCheckbox().should('exist')
+        submitButton().should('exist')
     })
 })

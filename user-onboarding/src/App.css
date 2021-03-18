@@ -64,9 +64,9 @@ button {
   height: 2rem;
   width: 6rem;
   border-radius: 8px;
-  color: rgb(220, 33, 20);
+  color: rgb(23, 216, 17);
   background-color: white;
-  border: 2px solid rgb(220, 33, 20);
+  border: 2px solid rgb(12, 185, 6);
 }
 button:hover {
   cursor: pointer;

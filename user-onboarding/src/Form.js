@@ -32,7 +32,7 @@ export default function Form(props) {
         <div className="form container" onSubmit={onSubmit}>
             <div className="form-group submit">
                 <h2>Welcome to the User Onboarding Form!</h2>
-                <button disabled={disabled}>submit</button>
+                <button name="button" disabled={disabled}>submit</button>
 
         <div className="errors">
             <div>{errors.first_name}</div>

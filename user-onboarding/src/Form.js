@@ -29,7 +29,9 @@ export default function Form(props) {
     }
 
     return (
-        <div className="form container" onSubmit={onSubmit}>
+        // needs form tags here!! 
+
+        <form className="form container" onSubmit={onSubmit}>
             <div className="form-group submit">
                 <h2>Welcome to the User Onboarding Form!</h2>
                 <button name="button" disabled={disabled}>submit</button>
@@ -94,7 +96,7 @@ export default function Form(props) {
         {/* <button disabled={disabled}>submit</button> */}
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 

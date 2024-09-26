@@ -7,6 +7,7 @@ export default function Form(props) {
         values,
         submit,
         change,
+        disabled,
         errors,
     } = props
 
@@ -18,34 +19,48 @@ export default function Form(props) {
     const onChange = event => {
         /* code goes here */
         const { name, value, checked, type } = event.target
+        // console.log('name', name)
+        // console.log('value', value)
+        // console.log('checked', checked)
+        // console.log('type', type)
 
         const val = type === 'checkbox' ? checked : value 
         change(name, val)
     }
 
     return (
-        /* code goes here*/
-        <div className="form container" onSubmit={onSubmit}>
-            <div className="form-group submit">
-                <h2>User Onboarding Form!</h2>
-                <button>submit</button>
+        // needs form tags here!! 
 
-        {/* code placeholder for errors? */}
+        <form className="form container" onSubmit={onSubmit}>
+            <div className="form-group submit">
+                <h2>Welcome to the User Onboarding Form!</h2>
+                <button name="button" disabled={disabled}>submit</button>
+
         <div className="errors">
-            <div>{errors.name}</div>
+            <div>{errors.first_name}</div>
+            <div>{errors.last_name}</div>
             <div>{errors.email}</div>
             <div>{errors.password}</div>
-            <div>{errors.terms}</div>
+            <div>{errors.yes}</div>
         </div>
 
 
         <div className="form-group inputs">
             <h4>Essential Details</h4>
-            <label>Name
+            <label>First Name
                 <input 
-                   value={values.name}
+                   value={values.first_name}
                    onChange={onChange}
-                   name="name"
+                   name="first_name"
+                   type="text"
+                />
+            </label>
+
+            <label>Last Name
+                <input 
+                   value={values.last_name}
+                   onChange={onChange}
+                   name="last_name"
                    type="text"
                 />
             </label>
@@ -70,16 +85,18 @@ export default function Form(props) {
 
         <div className="form-group checkboxes">
             <h4>Terms of Service</h4>
-            <label>Please accept the Terms of Service. This is a required step in the user onboarding process!
-                <input name="terms" type="checkbox" onChange={onChange} checked={values.terms}/>
+            <label>I accept the Terms of Service!
+                <input name="yes" type="checkbox" onChange={onChange} checked={values.yes}/>
             </label>
+
+            {/* <label>I do NOT accept the Terms of Service!
+                <input name="no" type="checkbox" onChange={onChange} checked={values.no}/>
+            </label> */}
         </div>
-
-        </div>
-
-
+        {/* <button disabled={disabled}>submit</button> */}
+                </div>
             </div>
-        </div>
+        </form>
     )
 }
 

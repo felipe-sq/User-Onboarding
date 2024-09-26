@@ -7,7 +7,7 @@ function User({ details }) {
 
   return (
     <div className='container'>
-      <h2>{details.name}</h2>
+      <h2>{details.first_name} {details.last_name}</h2>
       <p>Email: {details.email}</p>
     </div>
   )
